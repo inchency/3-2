@@ -1,0 +1,19 @@
+//
+// Do any local configuration here
+//
+
+// Consider adding the 1918 zones here, if they are not used in your
+// organization
+//include "/etc/bind/zones.rfc1918";
+
+zone "cclab.kookmin.ac.kr" {
+        type master;
+        file "/etc/bind/db.cclab.kookmin.ac.kr";
+//	allow-transfer {210.123.32.13;};
+        allow-transfer {"any";};
+};
+//reverse zone
+zone "112.246.203.in-addr.arpa" {
+        type master;
+        file "/etc/bind/db.203";
+};

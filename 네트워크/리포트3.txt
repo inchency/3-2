@@ -1,0 +1,12 @@
+리포트 #3
+---------
+ VirtualBox 네트워크 설정에 대한 다음 항목들을 조사하여, 보고서로 제출한다.
+  (참조사이트: https://www.virtualbox.org/manual/ch06.html)
+
+      1. Port forwarding with NAT (6.3.1)
+      2. Bridged networking (6.5)
+      3. Internal networking (6.6)
+      4. Host-only networking (6.7)
+
+ 제출일시: 9월 24일까지 가상대학에 제출
+

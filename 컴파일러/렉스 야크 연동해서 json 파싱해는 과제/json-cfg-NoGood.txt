@@ -1,0 +1,60 @@
+object:	LBRACE RBRACE
+	| LBRACE members RBRACE
+	;
+members:pair
+	| pair COMMA members
+	;
+pair:	string COLON value
+	;
+array:	LBRACKET RBRACKET
+	| LBRACKET elements RBRACKET
+elements: value
+	| value COMMA elements
+	;
+value: stirng
+	| number
+	| object
+	| array
+	| TRUE
+	| FALSE
+	| NULL
+	;
+string: DQUOTE DQUOTE
+	| DQUOTE chars DQUOTE
+	;
+chars:	char
+	| char chars
+	;
+char: LETTER
+	| RSLASH DQUOTE
+	| RSLASH SLASH
+	| RSLASH 'b'
+	| RSLASH 'f'
+	| RSLASH 'n'
+	| RSLASH 'r'
+	| RSLASH 't'
+	| RSLASH 'u' four_hex_digits
+	;
+four_hex_digits: HEX HEX HEX HEX
+	;
+number:	int
+	| int frac
+	| int exp
+	| int frac exp
+	;
+int: DIGIT
+	| DIGIT19 digits
+	| MINUS DIGIT
+	| MINUS DIGIT19 digits
+	;
+frac:	DOT digits
+	;
+exp:	e digits
+	;
+digits:	DIGIT
+	| DIGIT digits
+	;
+e:	EXP
+	| EXP_PLUS
+	| EXP_MINUS
+	;

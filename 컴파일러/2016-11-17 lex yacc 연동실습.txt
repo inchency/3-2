@@ -1,0 +1,9 @@
+calculator.l 파일을 보면
+#include "y.tab.h"를 해줘야 야크와 연동이 가능하고
+[\r\n]	return 0;   // eof
+\r 한 이유는 윈도우 리눅스에서 줄바꿈문자 처리해주는 방법이 달라서 해준거임
+\n만 있으면 리눅스에선 ok 그러나 윈도우에선 \r\n이기떄문에 오류가남
+ $ yacc -d calculator.y 이거하면 y.tab.c 와 y.tab.h가 생기고
+ $ flex calculator.l 이거하면 lex.yy.c 이게 생김
+ $ gcc -o calculator y.tab.c lex.yy.c -ly -lfl 이거 하면 calculator.exe 생김
+이제 ./calculator.exe 실행하면됨

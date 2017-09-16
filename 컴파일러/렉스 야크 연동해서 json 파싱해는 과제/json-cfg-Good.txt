@@ -1,0 +1,23 @@
+object:	LBRACE RBRACE
+	| LBRACE members RBRACE
+	;
+members:pair
+	| pair COMMA members
+	;
+pair:	STRING COLON value
+	;
+array:	LBRACKET RBRACKET
+	| LBRACKET elements RBRACKET
+elements: value
+	| value COMMA elements
+	;
+value: STRING
+	| INT
+	| DOUBLE
+	| object
+	| array
+	| TRUE
+	| FALSE
+	| NULL
+	;
+

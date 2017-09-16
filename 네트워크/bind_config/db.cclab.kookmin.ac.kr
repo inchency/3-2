@@ -1,0 +1,21 @@
+;
+; BIND data file for local loopback interface
+;
+$TTL	604800
+@	IN	SOA	ns.cclab.kookmin.ac.kr. root.cclab.kookmin.ac.kr. (
+			      2		; Serial
+			 604800		; Refresh
+			  86400		; Retry
+			2419200		; Expire
+			 604800 )	; Negative Cache TTL
+;
+@	IN	NS	ns.cclab.kookmin.ac.kr.
+@	IN	NS	ns.kookmin.ac.kr.
+@	IN	A	203.246.112.100
+@	IN	AAAA	::1
+ns.kookmin.ac.kr	IN	A	210.123.32.13
+ns	IN	A	203.246.112.100
+www	IN	A	203.246.112.100
+mail	IN	A	203.246.112.100
+www2	IN	A	203.246.112.92
+;

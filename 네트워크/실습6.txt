@@ -1,0 +1,46 @@
+(사전준비)
+===========
+1. Bind9을 다음 사이트에서 다운받는다.
+
+    - https://www.isc.org/downloads/bind/
+
+2. Bind9 설치에 대하여 다음 사이트를 읽을 것.
+     
+    - http://www.zytrax.com/books/dns/ch9/delegate.html
+
+
+(실습6)
+========
+1. ubuntu(192.168.x.101) 혹은 CentOS 7(192.168.x.102)에 bind9을 설치한다. 
+
+2. 실습5에서 구축한 ubuntu와 centos7 웹서버에 각각 도메인 
+   "www.(your-name).cclab.kr", "www2.(your name).cclab.kr"을 부여하고 
+   bind9설정파일에 등록한다.
+
+3. 설정이 정상적으로 되고 bind9서비스 재시작한 후에 브라우저 URL창에서
+   위 도메인주소들을 입력하면 홈페이지가 떠야 한다. 이때 IP주소설정 
+   파일에 기존 210.123.32.13 DNS서버주소대신 해당 운영체제에 따라 
+   192.168.x.101(102)로 설정변경한다.
+
+필기
+분산시스템 DNS
+cclab.kookmin.ac.kr (bind9 가동중 3개 파일)
+cclab = dns 명칭 (729호)
+kookmin은 국제관4층 전산센터에있음 (210.123.32.13)
+정식명칭 ns.kookmin.ac.kr (kookmin.ac.kr)을 담당
+
+$ sudo vim /etc/resolvconf/resolv.conf.d/head <- resolv.conf 초기화 안되게하기
+
+kimdonghoon.cclab.kookmin.ac.kr이 생김
+유분투 www.kimdonghoon.cclab.kookmin.ac.kr (101번)
+아파치 www2.kimdonghoon.cclab.kookmin.ac.kr (102번)
+
+named.conf.local은 한개
+db.locl      db.choieunheon.cclab.kookmin.ac.kr
+
+http://mslee89.tistory.com/89 <- centos dns설치 사이트
+
+OpenStack
+
+4G 4개의 코어 할당해야함
+기본 8기가,(4G) 8개의코어이상(4개) 이여야함

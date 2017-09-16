@@ -1,0 +1,14 @@
+OPENSTACK이란
+대시보드를 통해 compute, storage, network 등 거대한 자원 풀을 제어 할 수 있는 클라우드 운영체제이다.
+오픈스택의 특징은 이러한 자원들을 모두 웹 틴터페이스를 통해 관리 할 수 있다.
+오픈스택은 오픈소스이기 때문에 사람들은 자신이 필요한 만큼 구성 요소를 추가 할 수 있다.
+오픈스택의 운영에 있어 중심이 되는 핵심요소 9가지
+1. nova
+2. swift
+3. cinder
+4. neutron
+5. horizen
+6. keystone
+7. glance
+8. ceilometer
+9. heat

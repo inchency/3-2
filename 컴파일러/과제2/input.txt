@@ -1,0 +1,11 @@
+Terminals=ab
+Nonterminals=SAEFHDGC
+Final states=CDFGH
+S A _
+A E F
+E E H
+F D G
+H D H
+D _ C
+G _ H
+C D _

@@ -1,0 +1,38 @@
+192.168.43.16 // 내 핫스팟 주소
+1. 다음 사이트에서 wordpress 다운받음.
+     http://ko.wordpress.org   (한글)
+     http://www.wordpress.org  (영문)
+
+2. .tar.gz 다운로드 버튼을 마우스 오른쪽 버튼으로 클릭 ->
+    <링크주소복사> 선택함
+
+3. 로그인한 후 클립보드에 저장된 URL을 wget 옆에 붙여놓고 엔터침.
+     $wget http://ko.wordpress.org/wordpress-4.6.1-ko_KR.tar.gz
+					      3.9.1
+
+4.   $tar -zxvf wordpress-4.6.1-ko_KR.tar.gz
+
+5.   $sudo cp -R wordpress /var/www/html/wordpress
+
+6.   $mysql -u root -p
+     mysql> create database dbwordpress;
+     mysql> create user wordpressuser;
+     mysql> set password for wordpressuser = password("wppassword");
+     mysql> grant all privileges on dbwordpress.* TO wordpressuser@localhost IDENTIFIED BY 'wppassword';
+     mysql> FLUSH PRIVILEGES;
+     mysql> exit;
+
+7. $cd /var/www/html/wordpress
+   $sudo cp wp-config-sample.php wp-config.php
+
+8. $sudo vi wp-config.php
+     define('DB_NAME', 'dbwordpress');
+     define('DB_USER', 'wordpressuser');
+     define('DB_PASSWORD', 'wppassword');
+     define('DB_HOST', 'localhost');
+
+9. 브라우저에서 다음 주소 입력: http://(PC의 IP주소):8080/wordpress
+
+10. 브라우저를 통하여 wordpress 초기화 데이터 입력
+
+     

@@ -1,0 +1,7 @@
+11.24
+Report
+input data
+output data
+source Code
+
+XML, JSON , 문자열 아무거나 하는데 다 하면 좋음

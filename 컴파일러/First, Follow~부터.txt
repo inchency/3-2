@@ -1,0 +1,12 @@
+
+ - deterministic(결정적) 파싱을 하기 위한 작업 -> LOOKAHEAD (FIRST FOLLOW)
+FIRST
+FOLLOW
+생성규칙에 E이 없다면 FIRST로 해결가능하나
+나오는 결과가 모호해지므로 FOLLOW를 쓰는것임
+주의해야할점 앞에서 FIRST함수를 모두 구해놔야 FOLLOW 함수를 쓸 수 있음
+LOOKAHEAD
+First와 Follow를 이용
+궁극적으로 구하려는건 LOOKAhEAD고 앞에서 first follow 구한 이유는 lookahead 구하기 위함이였음
+좌순환 규칙은
+무한루프에 빠질수 있으므로 우순환규칙으로 바꿔서 빠져나올수있음

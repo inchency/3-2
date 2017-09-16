@@ -1,0 +1,85 @@
+각 생성규칙은 한라인에 하나씩
+nonterminal은 단어로
+문자한개만 아스키값(정수)가능
+ex) '+' 아스키 가능 '++' 불가능
+무낮 2개 이상도 정수로 정의해놓고 써야함(lex enum으로 했던 것처럼)
+yacc는 lex(어휘분석)한거에서 정수값을 입력받는다.
+대문자로만 된건 Token ID
+Lex에서의 정수값이라 보면됨
+ex 1+2+3은
+lex에서 (1,1) (3,0) (1,2) (3,0) (1,3) 라 보면됨
+
+) yacc의 이해를 위한 간단한 단지 덧셈과 뺄셈만이 가능한 아주 간단한 기능을 가진 계산기를 만든다고 할 때 그것의 실제 실행 예를 보이면 아래와 같다. 
+
+
+
+[ post ] % cat y_calc.y
+%token NAME NUMBER
+%%
+statement:    NAME '=' expression
+            | expression  { printf("= %d\n", $1); }
+            ;
+expression:   expression '+' NUMBER { $$ = $1 + $3; }
+            |   expression '-' NUMBER { $$ = $1 - $3; }
+            |   NUMBER  { $$ = $1; }
+            ;
+[ post ] % cat y_calc.l
+%{
+#include  "y.tab.h"
+extern int  yylval;
+%}
+%%
+[0-9]+ { yylval = atoi(yytext); return NUMBER;  }
+[\t ]+ ;
+\n return 0;    /* 논리적인 입력처리열의 끝 */
+. return  yytext[0];
+%%
+
+
+-> E -> E+a | E-a | a
+[post] ~ 부터 lex의 입력값
+#include "y.tab.h" 는 lex에서 enum으로 토큰값 받은걸 불러들이는거
+
+위에서 NAME NUMBER은 lex에서의 tokenID
+NAME은 변수일거라 추정됨
+NAME이 expression일 경우나
+그냥 수식만 왔을경우는 { printf("= %d\n", $1); }
+expression = $$
+expression = $1
+Number = $3
+1+2-3
+lex에서 (1,1) (3,0) (1,2) (3,0) (1,3)
+
+yacc에서 yylex라는 함수가 반드시 필요함
+lex를 이용하면 yylex라는 함수가 만들어짐
+
+// abc.y
+%{
+	#include <stdio.h>
+%}
+%%
+start: a { printf("sequential \"ABC\""); };
+a: 	'a'b 
+	| 'A'b 
+	;
+b: 	'b'c 
+	| 'B'c 
+	;
+c: 	'c' 
+	| 'C' 
+	;
+%%
+yylex() {
+	char ch;
+
+	ch = getchar();
+	if (isalpha(ch)) return ch;
+}
+
+main() {
+	yyparse();
+}
+
+위에서 start는 시작기호
+abc abC aBc 이딴거 입력하면 sequntail "ABC" 가 나오고 cba 이거 하면 syntax error나옴
+syntax error는 error라는 함수를 콜해서 나오는거임
